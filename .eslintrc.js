@@ -27,5 +27,6 @@ module.exports = {
     "@typescript-eslint/restrict-template-expressions": 0,
     "unicorn/prefer-node-protocol": 0,
     "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/no-unsafe-assignment": 0,
   },
 };

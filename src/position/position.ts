@@ -4,9 +4,14 @@ export class PositionInvalidCoordinateError extends Error {
   }
 }
 export const Position = (input) => {
-  if (input.x < 0 || input.y < 0) {
+  const inputConverted = {
+    x: typeof input.x === "number" ? input.x : Number.parseInt(input.x, 10),
+    y: typeof input.y === "number" ? input.y : Number.parseInt(input.y, 10),
+  };
+
+  if (inputConverted.x < 0 || inputConverted.y < 0) {
     throw new PositionInvalidCoordinateError(input);
   }
 
-  return input;
+  return inputConverted;
 };
