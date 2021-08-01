@@ -1,4 +1,4 @@
-import { Time, TimeNegativeError } from "./time";
+import { Time, TimeEmptyError, TimeNegativeError } from "./time";
 
 describe("Time", () => {
   test("when time is a valid number of seconds", () => {
@@ -14,5 +14,10 @@ describe("Time", () => {
   test("when time is a negative number of seconds, it should fail", () => {
     const input = -1;
     expect(() => Time(input)).toThrowError(new TimeNegativeError(input));
+  });
+
+  test("when time is empty, it should fail", () => {
+    const input = "";
+    expect(() => Time(input)).toThrowError(new TimeEmptyError());
   });
 });

@@ -9,7 +9,7 @@ import {
 describe("Color", () => {
   test("when input is a valid hexadecimal number", () => {
     const input = "0x012345";
-    expect(Color(input)).toStrictEqual(input);
+    expect(Color(input)).toStrictEqual(0x01_23_45);
   });
 
   test("when input is empty, it should fail", () => {

@@ -23,7 +23,7 @@ export const Color = (input) => {
     throw new ColorEmptyError();
   }
 
-  const number = Number(input);
+  const number = Number.parseInt(input, 16);
   if (!input.startsWith("0x") || Number.isNaN(number)) {
     throw new ColorInvalidHexadecimalError(input);
   }
@@ -32,5 +32,5 @@ export const Color = (input) => {
     throw new ColorTooHighError(input);
   }
 
-  return input;
+  return number;
 };
