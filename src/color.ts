@@ -6,7 +6,15 @@ export class ColorEmptyError extends Error {
 
 export class ColorInvalidHexadecimalError extends Error {
   constructor(value) {
-    super(`Given value is not a valid hexadecimal number ${value}`);
+    super(`Given value is not a valid hexadecimal number: ${value}`);
+  }
+}
+
+export const MAX = 0xff_ff_ff;
+
+export class ColorTooHighError extends Error {
+  constructor(value) {
+    super(`Given value is too high, max allowed value is ${MAX}: ${value}`);
   }
 }
 
@@ -15,8 +23,13 @@ export const Color = (input) => {
     throw new ColorEmptyError();
   }
 
-  if (!input.startsWith("0x") || Number.isNaN(Number(input))) {
+  const number = Number(input);
+  if (!input.startsWith("0x") || Number.isNaN(number)) {
     throw new ColorInvalidHexadecimalError(input);
+  }
+
+  if (number > MAX) {
+    throw new ColorTooHighError(input);
   }
 
   return input;

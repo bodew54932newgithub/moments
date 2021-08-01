@@ -1,4 +1,10 @@
-import { Color, ColorEmptyError, ColorInvalidHexadecimalError } from "./color";
+import {
+  Color,
+  ColorEmptyError,
+  ColorInvalidHexadecimalError,
+  ColorTooHighError,
+  MAX,
+} from "./color";
 
 describe("Color", () => {
   test("when input is a valid hexadecimal number", () => {
@@ -23,5 +29,10 @@ describe("Color", () => {
     expect(() => Color(input)).toThrowError(
       new ColorInvalidHexadecimalError(input)
     );
+  });
+
+  test(`when input is too high (over ${MAX}), it should fail`, () => {
+    const input = "0xFFFFFF0";
+    expect(() => Color(input)).toThrowError(new ColorTooHighError(input));
   });
 });
