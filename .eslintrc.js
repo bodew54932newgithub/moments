@@ -23,5 +23,7 @@ module.exports = {
     "unicorn/no-null": 0,
     "unicorn/prefer-module": 0,
     "@typescript-eslint/no-unsafe-return": 0,
+    "max-classes-per-file": 0,
+    "@typescript-eslint/restrict-template-expressions": 0,
   },
 };
