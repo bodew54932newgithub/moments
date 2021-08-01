@@ -1,7 +1,6 @@
 {
-  "name": "jest-base",
-  "version": "4.0.0",
-  "description": "Base for testing with Jest and TS",
+  "name": "moments",
+  "version": "0.0.1",
   "scripts": {
     "lint": "eslint .",
     "pretty": "prettier --write ./src",
@@ -10,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FredericEspiau/jest-base.git"
+    "url": "git+https://github.com/FredericEspiau/moments.git"
   },
   "author": "Frédéric Espiau <frederic.espiau@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FredericEspiau/jest-base/issues"
+    "url": "https://github.com/FredericEspiau/moments/issues"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "homepage": "https://github.com/FredericEspiau/jest-base#readme",
+  "homepage": "https://github.com/FredericEspiau/moments#readme",
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/node": "^16.4.10",
