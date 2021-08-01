@@ -24,4 +24,11 @@ describe("Position", () => {
       new PositionInvalidCoordinateError(input)
     );
   });
+
+  test("when a position's coordinate is not an integer, it should fail", () => {
+    const input = { x: 0.5, y: 5 };
+    expect(() => Position(input)).toThrowError(
+      new PositionInvalidCoordinateError(input)
+    );
+  });
 });
