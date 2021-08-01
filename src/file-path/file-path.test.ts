@@ -1,4 +1,8 @@
-import { FilePath, FilePathEmptyError, FilePathInvalidError } from "./filePath";
+import {
+  FilePath,
+  FilePathEmptyError,
+  FilePathInvalidError,
+} from "./file-path";
 
 describe("FilePath", () => {
   test("when file path is valid", () => {
