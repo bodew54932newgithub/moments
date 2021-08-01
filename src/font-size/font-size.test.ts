@@ -1,6 +1,7 @@
 import {
   FontSize,
   FontSizeEmptyError,
+  FontSizeInvalidError,
   FontSizeTooSmallError,
   MIN,
 } from "./font-size";
@@ -26,5 +27,15 @@ describe("FontSize", () => {
     expect(() => FontSize(input)).toThrowError(
       new FontSizeTooSmallError(input)
     );
+  });
+
+  test(`when the font size is an invalid number, it should fail`, () => {
+    const input = "test";
+    expect(() => FontSize(input)).toThrowError(new FontSizeInvalidError(input));
+  });
+
+  test(`when the font size is not a whole number, it should fail`, () => {
+    const input = 12.3;
+    expect(() => FontSize(input)).toThrowError(new FontSizeInvalidError(input));
   });
 });
