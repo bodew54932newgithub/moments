@@ -51,6 +51,18 @@ describe("Add overlay", () => {
       })(input)
     ).resolves.not.toThrow();
   });
+  test("when the file exist and the position is (0, 0)", async () => {
+    await expect(
+      addOverlay({
+        fileRepository: fileRepository.fileExists,
+        overlayRepository,
+      })({
+        ...input,
+        positionX: "0",
+        positionY: "0",
+      })
+    ).resolves.not.toThrow();
+  });
   test("when the file doesn't exist", async () => {
     await expect(
       addOverlay({
