@@ -3,7 +3,8 @@ import { Input } from "./input";
 describe("Input", () => {
   test("when input is valid", () => {
     const input = {
-      filePath: "input.mp4",
+      inputPath: "input.mp4",
+      outputPath: "output.mp4",
       text: "my text",
       positionX: "10",
       positionY: "10",
@@ -14,7 +15,8 @@ describe("Input", () => {
     };
 
     expect(Input(input)).toStrictEqual({
-      filePath: "input.mp4",
+      inputPath: "input.mp4",
+      outputPath: "output.mp4",
       text: "my text",
       position: { x: 10, y: 10 },
       fontSize: 42,

@@ -6,7 +6,8 @@ import { Color } from "../color/color";
 import { Interval } from "../time/interval";
 
 export const Input = ({
-  filePath,
+  inputPath,
+  outputPath,
   text,
   positionX,
   positionY,
@@ -15,7 +16,8 @@ export const Input = ({
   startTime,
   endTime,
 }) => ({
-  filePath: FilePath(filePath),
+  inputPath: FilePath(inputPath),
+  outputPath: FilePath(outputPath),
   text: Text(text),
   position: Position({ x: positionX, y: positionY }),
   fontSize: FontSize(fontSize),
