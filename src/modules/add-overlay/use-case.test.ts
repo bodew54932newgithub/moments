@@ -1,7 +1,11 @@
 import { Time } from "./models/time/time";
 import { addOverlay } from "./use-case";
 import { Resolution } from "./models/resolution/resolution";
-import { FileNotFoundError, OverlayTooLongError } from "./models/file/file";
+import {
+  FileNotFoundError,
+  OverlayOutOfVideoError,
+  OverlayTooLongError,
+} from "./models/file/file";
 
 const input = {
   inputPath: "test_input1.mp4",
@@ -94,6 +98,22 @@ describe("Add overlay", () => {
       })
     ).rejects.toThrowError(
       new OverlayTooLongError({ overlayLength: 70, videoLength: 60 })
+    );
+  });
+  test("when the position of the overlay exceeds the video's resolution", async () => {
+    await expect(
+      addOverlay({
+        fileRepository: fileRepository.fileExists,
+        overlayRepository,
+      })({
+        ...input,
+        positionY: "9999",
+      })
+    ).rejects.toThrowError(
+      new OverlayOutOfVideoError({
+        overlayPosition: { x: input.positionX, y: 9999 },
+        videoResolution: { x: 1920, y: 1080 },
+      })
     );
   });
 });
