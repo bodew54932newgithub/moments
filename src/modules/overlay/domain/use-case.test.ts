@@ -63,6 +63,18 @@ describe("Add overlay", () => {
       })
     ).resolves.not.toThrow();
   });
+  test("when the file exist and the overlay is as long as the video", async () => {
+    await expect(
+      addOverlay({
+        fileRepository: fileRepository.fileExists,
+        overlayRepository,
+      })({
+        ...input,
+        startTime: "0",
+        endTime: "60",
+      })
+    ).resolves.not.toThrow();
+  });
   test("when the file doesn't exist", async () => {
     await expect(
       addOverlay({
