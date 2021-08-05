@@ -4,5 +4,19 @@ export class FileNotFoundError extends Error {
   }
 }
 
-// @ts-ignore
-export const checkIfInputFits = ({ file, input }) => true;
+export class OverlayTooLongError extends Error {
+  constructor({ overlayLength, videoLength }) {
+    super(
+      `Overlay is too long. Length of overlay: ${overlayLength} and video length: ${videoLength}`
+    );
+  }
+}
+
+export const checkIfInputFits = ({ file, input }) => {
+  if (file.duration < input.interval.end) {
+    throw new OverlayTooLongError({
+      videoLength: file.duration,
+      overlayLength: input.interval.end,
+    });
+  }
+};

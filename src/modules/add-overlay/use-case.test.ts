@@ -1,7 +1,7 @@
 import { Time } from "./models/time/time";
 import { addOverlay } from "./use-case";
 import { Resolution } from "./models/resolution/resolution";
-import { FileNotFoundError } from "./models/file/file";
+import { FileNotFoundError, OverlayTooLongError } from "./models/file/file";
 
 const input = {
   inputPath: "test_input1.mp4",
@@ -82,5 +82,18 @@ describe("Add overlay", () => {
         overlayRepository,
       })(input)
     ).rejects.toThrowError(new FileNotFoundError(input.inputPath));
+  });
+  test("when the end of the overlay is after the end of the video", async () => {
+    await expect(
+      addOverlay({
+        fileRepository: fileRepository.fileExists,
+        overlayRepository,
+      })({
+        ...input,
+        endTime: "70",
+      })
+    ).rejects.toThrowError(
+      new OverlayTooLongError({ overlayLength: 70, videoLength: 60 })
+    );
   });
 });
